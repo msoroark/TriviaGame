@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <title>Always Sunny Trivia Game</title>
+</head>
+
+<body>
+    <div class="page-header">
+        <img class="title" src="assets/images/title.png">
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 timer">
+                <div>
+                    <h2 id="timer">Time Remaining: <span id="timeLeft"></span></h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="box">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="well well-lg hideQuestion">
+                    <div class="row">
+                        <div class="question" id="Q1">
+                            <h2>What is the greatest band ever?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question1" type="radio" data-correct="true">Chumbawamba
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question1" type="radio" data-correct="false"> Rolling Stones
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question1" type="radio" data-correct="false"> The Beatles
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question1" type="radio" data-correct="false"> Nickleback
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well well-lg hideQuestion">
+                    <div class="row">
+                        <div class="question" id="Q2">
+                            <h2>Dennis is Asshole. Why Charlie Hate?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question2" type="radio" data-correct="false">He wont play night crawlers.
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question2" type="radio" data-correct="false"> Because he slept with the waitress.
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question2" type="radio" data-correct="true"> Because Dennis is a bastard man.
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question2" type="radio" data-correct="false"> Wild Card!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well well-lg hideQuestion">
+                    <div class="row">
+                        <div class="question" id="Q3">
+                            <h2>What is the name of Dennis and Charlie's band?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question3" type="radio" data-correct="false"> The Pecan Sandies
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question3" type="radio" data-correct="true"> Electric Dream Machine
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question3" type="radio" data-correct="false"> Chemical Toilet
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question3" type="radio" data-correct="false"> Nickleback
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well well-lg hideQuestion">
+                    <div class="row">
+                        <div class="question" id="Q4">
+                            <h2>Who did the dishes?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question4" type="radio" data-correct="false"> Mac
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question4" type="radio" data-correct="false"> Charlie
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question4" type="radio" data-correct="false"> Dennis
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question4" type="radio" data-correct="true"> Dee
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well well-lg hideQuestion">
+                    <div class="row">
+                        <div class="question" id="Q5">
+                            <h2>Frank has a certificate proving he does not have what?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question5" type="radio" data-correct="false"> Ebola
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question5" type="radio" data-correct="true"> Donkey Brains
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question5" type="radio" data-correct="false"> A dog
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question5" type="radio" data-correct="false"> Fight Milk
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well well-lg hideQuestion" >
+                    <div class="row">
+                        <div class="Question" id="6">
+                            <h2>What Philly Celebrity would you most want to have a drink with?</h2>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <input name="question6" type="radio" data-correct="false"> Noam Chomsky
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question6" type="radio" data-correct="false"> Billie Holiday
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question6" type="radio" data-correct="false"> Kobe Bryant
+                            </div>
+                            <div class="col-md-3">
+                                <input name="question6" type="radio" data-correct="true">Bill Cosby
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				 <div class="well well-lg result">
+                    <div class="row">
+                    	<div>
+                    	You got: <span id="wrong/right"></span>
+                    	<br>
+                    	<span id="msg"></span>
+                    	</div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+</body>
+
+</html>
