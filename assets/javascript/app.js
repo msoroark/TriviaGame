@@ -1,18 +1,26 @@
 //from first answer clock starts.
 window.onload = function() {
-    $(".col-md-3").on("click", clock.start);
+
     $('.result').addClass('hidden');
+    $('.hideAtStart').addClass('hidden');
+    $('.hideQuestion').addClass('hidden');
 };
 
 var intervalId;
 var clockRunning = false;
+var correctTally = 0;
+var inCorrectTally = 0;
+
+
+
+
 
 var clock = {
-    time: 5,
+    time: 10,
 
     //reset game
     reset: function() {
-        clock.time = 5;
+        clock.time = 10;
 
         $("#timeLeft").html("1:00");
     },
@@ -21,6 +29,9 @@ var clock = {
         if (!clockRunning) {
             intervalId = setInterval(clock.count, 1000);
             clockRunning = true;
+            $('.hideQuestion').removeClass('hidden');
+            $('.hideAtStart').removeClass('hidden');
+            $('.btn-success').addClass('hidden')
         }
     },
 
@@ -39,10 +50,15 @@ var clock = {
         $("#timeLeft").html(converted);
 
         if (clock.time === 0) {
+            var unanswered = (correctTally + inCorrectTally - 10); 
             clock.stop();
             $('.hideQuestion').addClass('hidden');
-            getValues();
-        };
+            $('.result').removeClass('hidden');
+            $('#msg').text('Time\'s Up!');
+            $("#right").text(correctTally);
+            $("#wrong").text(inCorrectTally);
+            $('#unanswered').text(unanswered);
+        }
 
     },
 
@@ -63,25 +79,40 @@ var clock = {
 
         return minutes + ":" + seconds;
     }
-
-
 }
+$('.btn-success').on('click', clock.start);
+$('.correct').on('click', function(){
+    correctTally++;
 
-function getValues() {
-	var val = $("input[type='radio'][name='question1']:checked").val();
-	console.log(val);
-}
+});
+$('.incorrect').on('click', function(){
+    inCorrectTally++;
+});
+
+// function check() {
+//     var answered = $('input[type=radio]:checked');
+//     console.log(answered)
+//     // loop over the selected answers
+//     for(var i=0; i < answered.length; i++) {
+//         var isCorrect = answered[i].attributes['data-answer']
+//         console.log(isCorrect)
+//         if (isCorrect === 'data-answer="1"'){
+//             correctTally++;
+//             console.log(correctTally);
+//         }
+//     }
+// }
 
 
 
-    //for every radio button selected how many are true and how many are false
+//for every radio button selected how many are true and how many are false
 
 
-    //after one minute game ends. 
+//after one minute game ends. 
 
-    //register what is checked on game. 
+//register what is checked on game. 
 
-    //compare correct/incorrect answers.
-    //hide questions
-    //page for winning.
-    // page for losing.
+//compare correct/incorrect answers.
+//hide questions
+//page for winning.
+// page for losing.
