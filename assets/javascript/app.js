@@ -29,7 +29,7 @@ var clock = {
             clockRunning = true;
             $('.hideQuestion').removeClass('hidden');
             $('.hideAtStart').removeClass('hidden');
-            $('.start').addClass('hidden')
+            $('.start').addClass('hidden');
         }
     },
 
@@ -47,9 +47,10 @@ var clock = {
         console.log(clock.time);
         $("#timeLeft").html(converted);
 
-        if (clock.time === 0) {
+        if (clock.time === 0){
             var unanswered = (6 - correctTally + inCorrectTally );
             clock.stop();
+            $('.submit').addClass('hidden');
             $('.hideQuestion').addClass('hidden');
             $('.result').removeClass('hidden');
             $('#msg').text('Time\'s Up!');
@@ -112,7 +113,30 @@ $('.correct').on('click', function() {
 $('.incorrect').on('click', function() {
     inCorrectTally++;
 });
-
+$('.submit').on('click', function(){
+        var unanswered = (correctTally + inCorrectTally - 6);
+            clock.stop();
+            $('.submit').addClass('hidden');
+            $('.hideQuestion').addClass('hidden');
+            $('.result').removeClass('hidden');
+            $('#msg').text('Time\'s Up!');
+            $("#right").text(correctTally);
+            $("#wrong").text(inCorrectTally);
+            $('#unanswered').text(unanswered);
+            if (correctTally === 6) {
+                $("#resultMsg").text("Perfect Score! You haven't even begun to peak.");
+                $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/gdWAhP8rYKA?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
+            }
+            if (correctTally < inCorrectTally) {
+                $("#resultMsg").text("Hmm, do you have such a certificate?");
+                $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/RWc8JKVm28E?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
+            }
+            if (unanswered > correctTally + inCorrectTally) {
+                $("#resultMsg").text("Try again! You didn't really leave us with any options");
+                $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/g8c9HvcDDHI?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
+            }
+});
+    
 // function check() {
 //     var answered = $('input[type=radio]:checked');
 //     console.log(answered)
