@@ -20,9 +20,7 @@ var clock = {
 
     //reset game
     reset: function() {
-        clock.time = 30;
-
-        $("#timeLeft").html("1:00");
+    
     },
     //START CLOCK
     start: function() {
@@ -31,7 +29,7 @@ var clock = {
             clockRunning = true;
             $('.hideQuestion').removeClass('hidden');
             $('.hideAtStart').removeClass('hidden');
-            $('.btn-success').addClass('hidden')
+            $('.start').addClass('hidden')
         }
     },
 
@@ -50,7 +48,7 @@ var clock = {
         $("#timeLeft").html(converted);
 
         if (clock.time === 0) {
-            var unanswered = (correctTally + inCorrectTally - 6);
+            var unanswered = (6 - correctTally + inCorrectTally );
             clock.stop();
             $('.hideQuestion').addClass('hidden');
             $('.result').removeClass('hidden');
@@ -61,12 +59,12 @@ var clock = {
             if (correctTally === 6) {
                 $("#resultMsg").text("Perfect Score! You haven't even begun to peak.");
                 $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/gdWAhP8rYKA?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
-            } 
-            if (correctTally < inCorrectTally){
+            }
+            if (correctTally < inCorrectTally) {
                 $("#resultMsg").text("Hmm, do you have such a certificate?");
                 $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/RWc8JKVm28E?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
-            } 
-            if (unanswered > correctTally + inCorrectTally){
+            }
+            if (unanswered > correctTally + inCorrectTally) {
                 $("#resultMsg").text("Try again! Can I offer you an egg in this trying time?");
                 $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/g8c9HvcDDHI?rel=0&autoplay=1 " frameborder="0" allowfullscreen></iframe>');
             }
@@ -92,21 +90,21 @@ var clock = {
         return minutes + ":" + seconds;
     },
 
-    // playVideo: function() {
-        // if (correctTally === 10) {
-        //     $("#resultMsg").text("<h3> Perfect Score! You haven't even begun to peak.</h3>");
-        //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/gdWAhP8rYKA" frameborder="0" allowfullscreen></iframe>');
-        // } else if (correctTally < inCorrectTally){
-        //     $("#resultMsg").text("<h3>Hmm, do you have such a certificate?");
-        //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/RWc8JKVm28E" frameborder="0" allowfullscreen></iframe>');
-        // } else if (unanswered > correctTally + inCorrectTally){
-        //     $("#resultMsg").text("<h3>Try again! Can I offer you an egg in this trying time?</h3>");
-        //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/g8c9HvcDDHI" frameborder="0" allowfullscreen></iframe>');
-        // }
+//     // playVideo: function() {
+//     // if (correctTally === 10) {
+//     //     $("#resultMsg").text("<h3> Perfect Score! You haven't even begun to peak.</h3>");
+//     //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/gdWAhP8rYKA" frameborder="0" allowfullscreen></iframe>');
+//     // } else if (correctTally < inCorrectTally){
+//     //     $("#resultMsg").text("<h3>Hmm, do you have such a certificate?");
+//     //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/RWc8JKVm28E" frameborder="0" allowfullscreen></iframe>');
+//     // } else if (unanswered > correctTally + inCorrectTally){
+//     //     $("#resultMsg").text("<h3>Try again! Can I offer you an egg in this trying time?</h3>");
+//     //     $("#video").html('<iframe width="560" height="315" src="https://www.youtube.com/embed/g8c9HvcDDHI" frameborder="0" allowfullscreen></iframe>');
+//     // }
 
-    // }
+//     // }
 }
-$('.btn-success').on('click', clock.start);
+$('.start').on('click', clock.start);
 $('.correct').on('click', function() {
     correctTally++;
 
